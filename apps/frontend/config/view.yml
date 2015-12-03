@@ -1,14 +1,11 @@
-# You can find more information about this file on the symfony website:
-# http://www.symfony-project.org/reference/1_4/en/13-View
-
 default:
   http_metas:
     content-type: text/html
 
   metas:
-    #title:        "Two Men's Show | twomens.hu"
-    #description:  "Cégünk fő profilja a világítástechnika és látványtechnika. Vállaljuk TV-s show müsorok, TV müsorok, rendezvények, koncertek, videoklipek, reklámfilmek, kis és nagyjáték filmek teljes körű világitási és látványtechnikai lebonyolítását."
-    #keywords:     symfony, project
+    #title:        "ProjectName | projectdomain "
+    #description:  ""
+    #keywords:     ""
     #language:     en
     #robots:       noindex, nofollow
 

@@ -21,16 +21,12 @@
 
     <?php
         $base_container_class = "container";
-        //echo str_repeat("<br/>",8);var_dump(has_slot("base_container_class"));
         if(has_slot("base_container_class")){
             $base_container_class = get_slot("base_container_class");
         }
     ?>
     <div class="<?php echo $base_container_class?>">
-
-        <?php if(get_slot("breadcrumbs")){
-            include_slot("breadcrumbs");
-        }?>
+        <?php if(get_slot("breadcrumbs")){ include_slot("breadcrumbs"); }?>
 
         <?php include_partial("general/alert")?>
 

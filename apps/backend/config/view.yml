@@ -7,9 +7,6 @@ default:
 
   metas:
     title:        ProjectAdmin
-    #description:  symfony project
-    #keywords:     symfony, project
-    #language:     en
     robots:       noindex, nofollow
 
   stylesheets:    []
