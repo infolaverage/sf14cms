@@ -1,0 +1,5 @@
+all:
+  .array:
+    site_setting:
+      max_per_page_blog_entry: 5
+      contact_index_slug: "contact"

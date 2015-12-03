@@ -1,0 +1,62 @@
+#Site::
+#=======================================================================================================================
+Site:
+  columns:
+    #company_id:         { type: integer }
+    name:               { type: string(255) }
+    domain:             { type: string(255), notnull: true }
+    domain_alias:       { type: clob }
+    domain_dev:         { type: string(255) }
+    domain_dev_alias:   { type: clob }
+    is_active:          { type: boolean, notnull: true, default: false }
+    #is_enabled:         { type: boolean, notnull: true, default: true  }
+    is_demo:            { type: boolean, notnull: true, default: false }
+  actAs:
+    Timestampable:      ~
+#  relations:
+#    Company:
+#      onDelete:         RESTRICT
+#      local:            company_id
+#      foreign:          id
+#      foreignAlias:     Sites
+
+
+#OptionKey::
+#=======================================================================================================================
+OptionKey:
+  columns:
+    class_type:         { type: string(255), notnull: true }          # see OptionKeyTable::getClassTypeChoices
+    type:               { type: string(255), notnull: true }          # see OptionKeyTable::getTypeChoices
+    name:               { type: string(255), notnull: true }          # name  -> used in source code
+    label:              { type: string(255), notnull: true }          # label -> used for human
+    k_group:            { type: integer(2) }                          # see OptionKeyTable::getKGroupChoices
+    is_required:        { type: boolean, notnull: true, default: 1 }  #
+    variable_type:      { type: string(63) }
+  actAs:
+    Timestampable:      ~
+
+#SiteSetting::
+#=======================================================================================================================
+SiteSetting:
+  columns:
+    site_id:            { type: integer }
+    option_key_id:      { type: integer, notnull: true }
+    s_value:            { type: clob }
+    lang:               { type: string(2) }
+    is_active:          { type: boolean, default: true }
+    priority:           { type: integer, notnull: true, default: 1 }
+    is_read_only:       { type: boolean, notnull: true, default: 0 }
+  relations:
+    Site:
+      onDelete:         CASCADE
+      local:            site_id
+      foreign:          id
+      foreignAlias:     SiteSettings
+    OptionKey:
+      onDelete:         RESTRICT
+      local:            option_key_id
+      foreign:          id
+      foreignAlias:     SiteSettings
+  actAs:
+    Timestampable:      ~
+

@@ -1,0 +1,169 @@
+#SiteMenu::
+#=======================================================================================================================
+SiteMenu:
+  columns:
+    site_id:            { type: integer, notnull: true }
+    parent_id:          { type: integer }
+    type:               { type: string(63) } #footer, header, header_mobile, etc...
+    text:               { type: string(255) }
+    icon:               { type: clob }
+    url:                { type: string(1023) }
+    url_predefined:     { type: string }
+    html_title:         { type: string(1023) }
+    is_highlighted:     { type: boolean, default: 0 }
+    is_target_blank:    { type: boolean, default: 0 }
+    is_active:          { type: boolean, default: 1 }
+  actAs:
+    Timestampable:      ~
+    Sortable:
+      uniqueBy:         [parent_id]
+  relations: 
+    ParentMenu:
+      class:            SiteMenu
+      local:            parent_id
+      foreign:          id
+      foreignAlias:     ChildMenus
+      onDelete:         CASCADE
+    Site:
+      class:            Site
+      local:            site_id
+      foreign:          id
+      foreignAlias:     SiteMenus
+      onDelete:         RESTRICT
+
+#Cms::
+#=======================================================================================================================
+
+Cms:
+  columns:
+    site_id:                { type: integer }
+    title_general:          { type: string(255), notnull: true }
+    title:                  { type: string(255) }
+    role:                   { type: string(255) }
+    #short_description:     { type: clob }
+    description:            { type: clob }
+    #short_content:         { type: clob }
+    content:                { type: clob }
+    is_active:              { type: boolean, default: false }
+    #is_translated:         { type: boolean, default: false }
+    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    html_title:             { type: string(1023) }
+    meta_title:             { type: string(1023) }
+    meta_description:       { type: clob }
+    meta_keywords:          { type: clob }
+    meta_robots:            { type: string(255) }
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  actAs:
+    Timestampable:          ~
+    Sluggable:
+      unique:               false
+      fields:               [title_general]
+      canUpdate:            true
+      builder:              ['Project', 'slugify']
+    #Sortable:
+    #  uniqueBy:             [site_id]
+  relations:
+    Site:
+      onDelete:             CASCADE
+      local:                site_id
+      foreign:              id
+      foreignAlias:         Cmss
+
+Service:
+  columns:
+    site_id:                { type: integer }
+    title_general:          { type: string(255), notnull: true }
+    title:                  { type: string(255) }
+    #role:                   { type: string(255) }
+    description:            { type: clob }
+    content:                { type: clob }
+    is_active:              { type: boolean, default: false }
+    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    html_title:             { type: string(1023) }
+    meta_title:             { type: string(1023) }
+    meta_description:       { type: clob }
+    meta_keywords:          { type: clob }
+    meta_robots:            { type: string(255) }
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  actAs:
+    Timestampable:          ~
+    Sluggable:
+      unique:               false
+      fields:               [title_general]
+      canUpdate:            true
+      builder:              ['Project', 'slugify']
+    Sortable:
+      uniqueBy:             [site_id]
+  relations:
+    Site:
+      onDelete:             CASCADE
+      local:                site_id
+      foreign:              id
+      foreignAlias:         Services
+
+Reference:
+  columns:
+    site_id:                { type: integer }
+    title_general:          { type: string(255), notnull: true }
+    title:                  { type: string(255) }
+    #role:                   { type: string(255) }
+    filename:               { type: string(255) } # thumbnail
+    video:                  { type: string(511) } # video thumbnail
+    description:            { type: clob }
+    content:                { type: clob }
+    is_active:              { type: boolean, default: false }
+    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    html_title:             { type: string(1023) }
+    meta_title:             { type: string(1023) }
+    meta_description:       { type: clob }
+    meta_keywords:          { type: clob }
+    meta_robots:            { type: string(255) }
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  actAs:
+    Timestampable:          ~
+    Sluggable:
+      unique:               false
+      fields:               [title_general]
+      canUpdate:            true
+      builder:              ['Project', 'slugify']
+    Sortable:
+      uniqueBy:             [site_id]
+  relations:
+    Site:
+      onDelete:             CASCADE
+      local:                site_id
+      foreign:              id
+      foreignAlias:         References
+
+TeamMember:
+  columns:
+    site_id:                { type: integer }
+    title_general:          { type: string(255), notnull: true }
+    title:                  { type: string(255) }
+    member_position:        { type: string(511) }
+    filename:               { type: string(255) } # thumbnail
+    description:            { type: clob }
+    content:                { type: clob }
+    is_active:              { type: boolean, default: false }
+    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    html_title:             { type: string(1023) }
+    meta_title:             { type: string(1023) }
+    meta_description:       { type: clob }
+    meta_keywords:          { type: clob }
+    meta_robots:            { type: string(255) }
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  actAs:
+    Timestampable:          ~
+    Sluggable:
+      unique:               false
+      fields:               [title_general]
+      canUpdate:            true
+      builder:              ['Project', 'slugify']
+    Sortable:
+      uniqueBy:             [site_id]
+  relations:
+    Site:
+      onDelete:             CASCADE
+      local:                site_id
+      foreign:              id
+      foreignAlias:         TeamMembers

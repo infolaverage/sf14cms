@@ -1,0 +1,6 @@
+all:
+  mgI18nPlugin:
+    connection: doctrine
+    cultures_available:
+      en: English
+      hu: Magyar

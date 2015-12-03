@@ -1,0 +1,110 @@
+reference:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Reference
+    module:               reference
+    prefix_path:          /reference
+    column:               id
+    with_wildcard_routes: true
+
+team_member:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TeamMember
+    module:               team_member
+    prefix_path:          /team_member
+    column:               id
+    with_wildcard_routes: true
+
+service:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Service
+    module:               service
+    prefix_path:          /service
+    column:               id
+    with_wildcard_routes: true
+
+contact:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Contact
+    module:               contact
+    prefix_path:          /contact
+    column:               id
+    with_wildcard_routes: true
+
+banner:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Banner
+    module:               banner
+    prefix_path:          /banner
+    column:               id
+    with_wildcard_routes: true
+
+site_setting:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                SiteSetting
+    module:               site_setting
+    prefix_path:          /site_setting
+    column:               id
+    with_wildcard_routes: true
+
+option_key:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                OptionKey
+    module:               option_key
+    prefix_path:          /option_key
+    column:               id
+    with_wildcard_routes: true
+
+site_menu:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                SiteMenu
+    module:               site_menu
+    prefix_path:          /site_menu
+    column:               id
+    with_wildcard_routes: true
+
+site:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Site
+    module:               site
+    prefix_path:          /site
+    column:               id
+    with_wildcard_routes: true
+
+cms:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Cms
+    module:               cms
+    prefix_path:          /cms
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+custom_site_setting:
+  url: /site/site_settings/:site_id
+  param: { module: site, action: settings }
+
+# default rules
+homepage:
+  url:   /
+  param: { module: cms, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

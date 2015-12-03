@@ -1,0 +1,12 @@
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn:      mysql:host=10.1.2.8;dbname=s14cms_original_db
+      username: s14cms_original_user
+      password: s14cms_original_pass
+      encoding: utf8
+      attributes:
+        DEFAULT_TABLE_TYPE:     INNODB
+        DEFAULT_TABLE_CHARSET:  utf8
+        DEFAULT_TABLE_COLLATE:  utf8_unicode_ci

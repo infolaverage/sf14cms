@@ -1,0 +1,22 @@
+#Contact::
+Contact:
+  columns:
+    site_id:            { type: integer }
+    mail:               { type: string(255) }
+    name:               { type: string(255) }
+    phone:              { type: string(255) }
+    message:            { type: clob }
+    attachment:         { type: clob }
+    #language:           { type: string(5) }
+    ip_address:         { type: string(255) }
+    sent_from:          { type: string(255) }
+    #is_important:       { type: integer, default: 0 }
+    client_info:        { type: array(1000), notnull: true }
+  actAs:
+    Timestampable:      ~
+  relations:
+    Site:
+      onDelete:         CASCADE
+      local:            site_id
+      foreign:          id
+      foreignAlias:     Contacts

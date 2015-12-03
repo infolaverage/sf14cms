@@ -1,0 +1,34 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           SiteMenu
+    theme:                 custom_theme
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          site_menu
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display: [id, _site_id, _parent_id, text, _url, is_target_blank, is_active, position]
+        table_method: retrieveBackendEntityList
+        object_actions:
+          #_show:        ~
+          _edit:        ~
+      filter:
+        class:  false
+      form:
+        class:  BackendSiteMenuForm
+        actions:
+          _save: ~
+          _save_and_add: ~
+          _list: ~
+          _delete: ~
+      edit:    ~
+      new:     ~
+ 

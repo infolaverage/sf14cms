@@ -1,0 +1,35 @@
+#Banner::
+#=======================================================================================================================
+Banner:
+  columns:
+    site_id:             { type: integer, notnull: true }
+    display_type:        { type: integer(2), notnull: true, default: 0 }
+    url:                 { type: string }
+    url_predefined:      { type: string }
+    filename:            { type: string(255) }
+    html_alt:            { type: string(255) }
+    html_title:          { type: string(255) }
+    title:               { type: string(255) }
+    head_title:          { type: string(255) }
+    head_text:           { type: string }
+    head_icon:           { type: string }
+    #short_description:   { type: clob }
+    description:         { type: clob }
+    #short_content:       { type: clob }
+    content:             { type: clob }
+    template:            { type: integer }
+    custom_code:         { type: clob }
+    is_target_blank:     { type: boolean, notnull: true, default: 0 }
+    is_active:           { type: boolean, notnull: true, default: 1 }
+    show_title:          { type: boolean, notnull: true, default: 1 }
+  actAs:
+    Timestampable:       ~ 
+    Sortable:
+      uniqueBy:         [site_id, display_type]
+  relations:
+    Site:
+      class:             Site
+      local:             site_id
+      foreign:           id
+      foreignAlias:      Banners
+      onDelete:          CASCADE

@@ -1,0 +1,36 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    #title:        "Two Men's Show | twomens.hu"
+    #description:  "Cégünk fő profilja a világítástechnika és látványtechnika. Vállaljuk TV-s show müsorok, TV müsorok, rendezvények, koncertek, videoklipek, reklámfilmek, kis és nagyjáték filmek teljes körű világitási és látványtechnikai lebonyolítását."
+    #keywords:     symfony, project
+    #language:     en
+    #robots:       noindex, nofollow
+
+  stylesheets:
+    - /resources_core/bootstrap_core/css/bootstrap.min.css
+    - /resources_core/bootstrap_core/css/bootstrap-theme.min.css
+    - /resources_core/plugins/fontawesome/css/font-awesome.min.css
+
+    - /resources_core/plugins/prettyPhoto/css/prettyPhoto.css
+    - /resources_core/plugins/supslides/stylesheets/superslides.css
+
+    - /resources/css/fonts.css
+    - /resources/css/ccnt.css
+    - /resources/css/layout.css
+
+  javascripts:
+    - /resources_core/jquery/jquery-1.11.3.min.js
+    - /resources_core/bootstrap_core/js/bootstrap.min.js
+
+    - /resources_core/plugins/prettyPhoto/js/jquery.prettyPhoto.js
+    - /resources_core/plugins/supslides/jquery.superslides.js
+    - /resources/js/site.js
+
+  has_layout:     true
+  layout:         layout

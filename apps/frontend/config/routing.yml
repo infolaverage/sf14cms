@@ -1,0 +1,52 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: site, action: openpage }
+
+#------------------------------------------------------------------------------
+
+contact:
+  url: /:index_slug.chtml
+  param: { module: contact, action: index, index_slug: contact }
+
+#------------------------------------------------------------------------------
+team_member_index:
+  url: /:index_slug.tmhtml
+  param: { module: team_member, action: index, index_slug: team }
+
+team_member_index_alt:
+  url: /:index_slug.tmhtml
+  param: { module: team_member, action: index, index_slug: team }
+
+team_member_show:
+  url: /:obj_final_slug.id.tmhtml
+  param: { module: team_member, action: show }
+#------------------------------------------------------------------------------
+reference_index:
+  url: /:index_slug.rhtml
+  param: { module: reference, action: index, index_slug: reference }
+
+reference_index_alt:
+  url: /:index_slug.rhtml
+  param: { module: reference, action: index, index_slug: reference }
+
+#LOCALIZABLE
+#------------------------------------------------------------------------------
+cms_show:
+  url: /:obj_final_slug.:id.cshtml
+  param: { module: cms, action: show }
+
+cms_show_a1:
+  url: /:id.cshtml
+  param: { module: cms, action: show }
+#------------------------------------------------------------------------------
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

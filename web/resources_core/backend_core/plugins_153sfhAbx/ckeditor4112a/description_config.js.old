@@ -1,0 +1,49 @@
+CKEDITOR.stylesSet.add( 'my_styles_2', [
+    // Block-level styles.
+    { name: 'Alap bekezdés', element: 'p', attributes: { 'class': '' } }
+
+    /*{ name: 'Lead (H1 alatt)',         element: 'p', attributes: { 'class': 'lead' } },
+    { name: 'Zöld kiemelt (max 2-3 sor)', element: 'p', attributes: { 'class': 'format-type-1' } },
+    { name: 'Idézet', element: 'p', attributes: { 'class': 'quote' } },
+    { name: 'Kérdés', element: 'p', attributes: { 'class': 'question' } },
+    */
+    //inline styles
+    /*
+     { name: 'imageleft', element: 'p', attributes: { 'class': 'image-left' } },
+     { name: 'imagecenter', element: 'p', attributes: { 'class': 'image-center' } },
+     { name: 'imageright', element: 'p', attributes: { 'class': 'image-right' } },
+     *//*
+    { name: 'Kép balra', element: 'img', attributes: { 'class': 'image-left' } },
+    { name: 'Kép középen', element: 'img', attributes: { 'class': 'image-center' } },
+    { name: 'Kép jobbra', element: 'img', attributes: { 'class': 'image-right' } }*/
+]);
+
+CKEDITOR.editorConfig = function( config ) {
+    config.height = 160;
+
+    config.toolbar = [
+        {name: 'document', items: ['Save', 'Source']},
+        {name: 'basicstyles', items: ['Bold'/*, 'Italic', 'Underline'*/]},
+        /*{name: 'paragraph', items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']},*/
+        {name: 'links', items: ['Link', 'Unlink'/*, 'Anchor'*/]},
+        {name: 'insert', items: [/*'Image',*/ /*'Flash',*/ /*'Table',*/ /*'HorizontalRule',*/ 'SpecialChar' /*'PageBreak', 'Iframe',*/ /*'RelatedItem'*/]},
+        /*'/',*/
+        /*{name: 'styles', items: ['Styles', 'Format'/*, 'Font', 'FontSize']}*/
+        /*{name: 'colors', items: ['TextColor', 'BGColor']}*/
+    ];
+
+    config.format_tags      = 'p';
+    config.extraPlugins     = 'relatedItem,wordcount';
+    config.allowedContent   = true;
+    config.fillEmptyBlocks  = false;
+    config.bodyClass        = 'c_area';
+    config.stylesSet        = 'my_styles_2';
+    config.contentsCss      = '/resources/css/layout-backend.css';
+
+    /*
+    config.coreStyles_underline = {
+        element: 'span',
+        attributes: { 'class': 'underline' }
+    }*/
+   /* config.justifyClasses = [ 'align-left', 'align-center', 'align-right', 'align-justify' ];*/
+}

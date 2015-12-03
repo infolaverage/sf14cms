@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * site_menu actions.
+ *
+ * @package    s14cms
+ * @subpackage site_menu
+ * @author     Your name here
+ * @version    SVN: $Id$
+ */
+class site_menuActions extends sfActions
+{
+  /**
+   * Executes index action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeIndex(sfWebRequest $request)
+  {
+    $this->forward('default', 'module');
+  }
+}

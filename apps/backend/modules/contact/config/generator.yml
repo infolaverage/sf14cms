@@ -1,0 +1,32 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Contact
+    theme:                 custom_theme
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          contact
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display: [id, _site_id, name, phone, mail]
+        table_method: retrieveBackendEntityList
+        object_actions:
+          _edit:        ~
+      filter:
+        class: BackendContactFormFilter
+      form:
+        class: BackendContactForm
+        actions:
+          _save: ~
+          _save_and_add: ~
+          _list: ~
+          _delete: ~
+      edit:    ~
+      new:     ~

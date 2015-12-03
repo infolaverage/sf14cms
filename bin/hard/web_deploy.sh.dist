@@ -1,0 +1,16 @@
+#!/bin/bash
+echo ""
+echo "!!!!!!!!!  DANGER ZONE !!!!!!!!!"
+echo ""
+echo "+ [HARD] Copy WEB files from DEV => PROD"
+echo "Are you sure about this?! Select below:"
+echo ""
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) rsync -avzK --exclude=.git* --delete --exclude-from /home/infol/sites/dev/twomens/web_excludes.txt /home/infol/sites/dev/twomens/www/web/ 10.1.2.1:/home/infol/sites/twomens.hu/www/web/; break;;
+        No ) exit;;
+    esac
+done
+    
+  
+   

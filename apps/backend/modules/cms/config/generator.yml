@@ -1,0 +1,32 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Cms
+    theme:                 custom_theme
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          cms
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display: [id, _site_id, title, is_active, updated_at]
+        table_method: retrieveBackendEntityList
+        object_actions:
+          _edit:        ~
+      filter:
+        class: false
+      form:
+        class: BackendCmsForm
+        actions:
+          _save: ~
+          _save_and_add: ~
+          _list: ~
+          _delete: ~
+      edit:    ~
+      new:     ~

@@ -1,0 +1,20 @@
+CKEDITOR.editorConfig = function( config ) {
+    config.height = 120;
+    config.toolbar = [
+        {name: 'document', items: ['Save', 'Source']},
+        {name: 'basicstyles', items: ['Bold'/*, 'Italic', 'Underline'*/]},
+        {name: 'insert', items: [/*'Image',*/ /*'Flash',*/ /*'Table',*/ /*'HorizontalRule',*/ 'SpecialChar' /*'PageBreak', 'Iframe',*/ /*'RelatedItem'*/]}
+        /*{name: 'paragraph', items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']}*/
+    ];
+    config.bodyClass    = 'c_area';
+    config.contentsCss  = '/resources/css/layout-backend.css';
+    config.extraPlugins = 'wordcount';
+    /*
+    config.coreStyles_underline = {
+        element: 'span',
+        attributes: { 'class': 'underline' }
+    }
+
+    config.justifyClasses = [ 'align-left', 'align-center', 'align-right', 'align-justify' ];
+    */
+}

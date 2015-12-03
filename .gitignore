@@ -1,0 +1,23 @@
+#===================================================
+# Config files
+#===================================================
+/config/databases.yml
+
+#===================================================
+# Cache and Logs 
+#===================================================
+/cache/*
+/logs/*
+/web/view_cache/*
+2_cloning_the_project_to_nodes_and_make_symlinks.sh
+
+#===================================================
+# Web dev assets and Content-generated files
+#===================================================
+/web/images/*
+/web/uploads/*
+/web/sitemap/*
+/web/favicon.ico
+/web/backend_dev_stdxb.php
+/web/frontend_dev_stdxa.php
+

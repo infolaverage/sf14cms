@@ -1,0 +1,41 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Banner
+    theme:                 custom_theme
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          banner
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display: [id, _site_id, _display_type, url, head_text, is_active, updated_at, position]
+        #sort: [position, asc]
+        table_method: retrieveBackendEntityList
+        object_actions:
+          promote:
+            action: promote
+            params: { "class":"btn btn-default" }
+            label: "<i class=\"fa fa-arrow-up\"></i>"
+          demote:
+            action: demote
+            params: { "class":"btn btn-default" }
+            label: "<i class=\"fa fa-arrow-down\"></i>"
+          _edit:        ~
+      filter:
+        class: false
+      form:
+        class: BackendBannerForm
+        actions:
+          _save: ~
+          _save_and_add: ~
+          _list: ~
+          _delete: ~
+      edit:    ~
+      new:     ~

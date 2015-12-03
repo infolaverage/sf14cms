@@ -1,0 +1,33 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Site
+    theme:                 custom_theme
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          site
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display: [id, name, domain, domain_dev, is_active, updated_at]
+        table_method: retrieveBackendEntityList
+        object_actions:
+          _show:        ~
+          _edit:        ~
+      filter:
+        class: false
+      form:
+        class: BackendSiteForm
+        actions:
+          _save: ~
+          _save_and_add: ~
+          _list: ~
+          _delete: ~
+      edit:    ~
+      new:     ~

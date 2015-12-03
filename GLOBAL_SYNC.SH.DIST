@@ -1,0 +1,62 @@
+#!/bin/bash
+PROJECT_DIR="/home/infol/sites/dev/s14cms/www"
+
+SYMFONY="$PROJECT_DIR/symfony"
+CACHE_DIR="$PROJECT_DIR/cache"
+APC_CLEAR="http://infolaverage.hu/apc_clear.php"
+VIEW_CACHE_DIR="$PROJECT_DIR/web/view_cache"
+echo "======================================================="
+echo " GLOBAL SYNC "
+echo "======================================================="
+echo " Project          : $PROJECT_DIR "
+echo " Symfony          : $SYMFONY "
+echo " Cache            : $CACHE_DIR "
+echo " APC              : $APC_CLEAR "
+echo " View cache       : $VIEW_CACHE_DIR "
+echo " ------------------------------------------------------"
+if [ -d $PROJECT_DIR ]; then
+	echo "ProjectDirectory Exist"
+else
+	echo "ProjectDirectory is not exist, exiting";
+	exit
+fi
+
+if [[ -d $PROJECT_DIR ]] && [[ -f $SYMFONY ]] && [[ -d $CACHE_DIR ]]; then
+	echo ""
+	echo "Clearing Project cache with cc"
+	echo "-- running >> php $SYMFONY cc"
+	sudo sh /root/command_sync.sh "php $SYMFONY cc"
+
+	echo ""
+	echo "Chmod 777 Cache dir"
+	echo "-- running >> chmod -R 777 $CACHE_DIR/*"
+	#sudo sh /root/command_sync.sh "chmod -R 777 $CACHE_DIR/*"
+
+
+	echo ""
+	echo "Clearing apc cache"
+	echo "-- running >> curl $APC_CLEAR"
+	sudo sh /root/command_sync.sh "curl $APC_CLEAR"
+
+	echo ""
+
+	echo "Optimize Frontend in prod env"
+	echo "-- running >> php $SYMFONY project:optimize frontend prod"
+	sudo sh /root/command_sync.sh "php $SYMFONY project:optimize frontend prod"
+
+	echo ""
+	#echo ""
+else
+	echo "Missing settings... exiting..."
+        exit
+fi
+
+exit
+
+
+##########sudo sh /root/command_sync.sh "php /home/infol/sites/s14cms.hu/www/symfony cc"
+##########sudo sh /root/command_sync.sh "chmod -R 777 /home/infol/sites/s14cms.hu/www/cache/*"
+##########sudo sh /root/command_sync.sh "curl http://infolaverage.hu/apc_clear.php"
+##########sudo sh /root/command_sync.sh "php /home/infol/sites/s14cms.hu/www/symfony project:optimize frontend prod"
+
+#sudo sh /root/command_sync.sh "rm -rf /home/infol/sites/s14cms.hu/www/web/view_cache/*"

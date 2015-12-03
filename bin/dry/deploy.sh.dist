@@ -1,0 +1,13 @@
+#!/bin/bash
+echo ""
+echo "+ [SOFT SIMULATION] Copy SOURCES from DEV => PROD"
+echo "Are you sure about this?! Select below:"
+echo ""
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) rsync -avzKn --exclude=.git* --delete --exclude-from /home/infol/sites/dev/twomens/excludes.txt /home/infol/sites/dev/twomens/www/ 10.1.2.1:/home/infol/sites/twomens.hu/www/; break;;
+        No ) exit;;
+    esac
+done
+    
+  
