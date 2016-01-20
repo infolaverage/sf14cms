@@ -25,10 +25,11 @@ test:
 all:
   .settings:
 
-    enabled_modules:        [default, sfGuardAuth, mgI18nAdmin]
+    enabled_modules:        [default, sfGuardAuth, mgI18nAdmin, sfCombine]
 
-    standard_helpers:       [Partial, Cache, I18N, MyAsset]
-
+    standard_helpers:       [Partial, Cache, I18N, MyAsset, sfCombine]
+    #standard_helpers:       [Partial, Cache, I18N, I18nUrl, MyAsset, sfCombine]
+    
     default_culture:        hu
     charset:                utf-8
     i18n:                   true
