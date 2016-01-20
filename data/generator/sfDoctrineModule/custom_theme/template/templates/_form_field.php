@@ -10,14 +10,14 @@
         <?php /*[?php echo $form[$name]->renderLabel($label) ?]*/?>
         <?php /*[?php echo $form[$name]->renderLabelName($name) ?]*/?>
         <?php /*<?php #echo $this->getConfig('label', '', true)*/?>
-        [?php echo Translate::from(array("amg","<?php echo $this->getSingularName()?>","field",$name,"label"))?]
+        [?php echo Translate::from(array("amg","<?php echo $this->getSingularName()?>","field",$name,"label"), ["default"=> $form[$name]->renderLabelName($name)])?]
     </label>
 
     <div class="controls col-md-9">
 
         <?php /*RENDERER: [?php echo $form[$name]->getWidget()->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes); ?]*/?>
         [?php if(!$form[$name]->getWidget()->getAttribute("data-display-as")): ?]
-        [?php $form[$name]->getWidget()->setAttribute("class", "form-control ".$form[$name]->getWidget()->getAttribute("class")."")?]
+            [?php $form[$name]->getWidget()->setAttribute("class", "form-control ".$form[$name]->getWidget()->getAttribute("class")."")?]
         [?php endif; ?]
 
         <?php /*
@@ -31,38 +31,38 @@
 
 
         [?php if( $form[$name]->getWidget()->getAttribute("data-display-as") == "checkbox-switch"): ?]
-        <div
-            class="make-switch"
-            data-on-label="&nbsp;<?php echo Translate::from("form:display:checkbox-switch:on-label")?>&nbsp;"
-            data-off-label="&nbsp;<?php echo Translate::from("form:display:checkbox-switch:off-label")?>&nbsp;"
-            >
-            [?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?]
-        </div>
+            <div
+                class="make-switch"
+                data-on-label="&nbsp;<?php echo Translate::from("form:display:checkbox-switch:on-label")?>&nbsp;"
+                data-off-label="&nbsp;<?php echo Translate::from("form:display:checkbox-switch:off-label")?>&nbsp;"
+                >
+                [?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?]
+            </div>
         [?php elseif( $form[$name]->getWidget()->getAttribute("data-display-as") == "file-editable-image"): ?]
-        <div class="file-editable-image">
-            [?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?]
-        </div>
+            <div class="file-editable-image">
+                [?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?]
+            </div>
         [?php else: ?]
 
-        <?php //ICON-ALIGN: ?>
-        [?php $icon_align   = $form[$name]->getWidget()->getAttribute("data-icon-align"); ?]
-        [?php $icon         = $form[$name]->getWidget()->getAttribute("data-icon"); ?]
-        [?php $input_size   = $form[$name]->getWidget()->getAttribute("data-input-size"); ?]
-        [?php $has_icon     = $icon ? true : false; ?]
+            <?php //ICON-ALIGN: ?>
+            [?php $icon_align   = $form[$name]->getWidget()->getAttribute("data-icon-align"); ?]
+            [?php $icon         = $form[$name]->getWidget()->getAttribute("data-icon"); ?]
+            [?php $input_size   = $form[$name]->getWidget()->getAttribute("data-input-size"); ?]
+            [?php $has_icon     = $icon ? true : false; ?]
 
-        [?php $icon_suffix = $form[$name]->getWidget()->getAttribute("data-icon-suffix")?]
-        [?php $text_suffix = $form[$name]->getWidget()->getAttribute("data-text-suffix")?]
+            [?php $icon_suffix = $form[$name]->getWidget()->getAttribute("data-icon-suffix")?]
+            [?php $text_suffix = $form[$name]->getWidget()->getAttribute("data-text-suffix")?]
 
-        [?php $container_class_a   = array(); ?]
-        [?php $container_class_a[] = $has_icon ? "input-icon" : ""; ?]
-        [?php $container_class_a[] = $input_size; ?]
-        [?php if( !$form[$name]->getWidget()->getAttribute("data-display-as") == "" || $icon_suffix || $text_suffix ): ?]
-        [?php $container_class_a[] = "input-group"; ?]
-        [?php endif;?]
+            [?php $container_class_a   = array(); ?]
+            [?php $container_class_a[] = $has_icon ? "input-icon" : ""; ?]
+            [?php $container_class_a[] = $input_size; ?]
+            [?php if( !$form[$name]->getWidget()->getAttribute("data-display-as") == "" || $icon_suffix || $text_suffix ): ?]
+                [?php $container_class_a[] = "input-group"; ?]
+            [?php endif;?]
 
-        [?php $container_class = implode($container_class_a, " "); ?]
+            [?php $container_class = implode($container_class_a, " "); ?]
 
-        <div class="[?php echo $container_class; ?]">
+            <div class="[?php echo $container_class; ?]">
 
 
             [?php if($has_icon):?]
@@ -122,7 +122,7 @@
 
         [?php $field_value = $form->getObject()->$name; ?]
         [?php if($field_value):?]
-        <a href="[?php echo Project::getDerefererUrl($field_value);?]" target="_blank" class="btn yellow btn-xs"><i class="fa fa-external-link"></i> Ugrás a mentett URL-re: [?php echo $field_value;?]</a>
+            <a href="[?php echo Project::getDerefererUrl($field_value);?]" target="_blank" class="btn yellow btn-xs"><i class="fa fa-external-link"></i> Ugrás a mentett URL-re: [?php echo $field_value;?]</a>
         [?php endif;?]
 
         [?php endif; ?]
@@ -138,17 +138,17 @@
         [?php endif; ?]
 
         [?php if ($form[$name]->hasError()): ?]
-        <!--        <div class="controls col-md-12">-->
+            <!--        <div class="controls col-md-12">-->
         [?php include_partial('<?php echo $this->getModuleName() ?>/form_field_error', array('form' => $form, 'name' => $name)); ?]
-        <!--        </div>-->
+            <!--        </div>-->
         [?php endif; ?]
 
         [?php if ($help): ?]
-        <span class="help-block">[?php echo __($help, array(), '<?php echo $this->getI18nCatalogue() ?>') ?]</span>
+            <span class="help-block">[?php echo __($help, array(), '<?php echo $this->getI18nCatalogue() ?>') ?]</span>
         [?php elseif ($help = $form[$name]->renderHelp()): ?]
-        <span class="help-block">[?php echo $help ?]</span>
+            <span class="help-block">[?php echo $help ?]</span>
         [?php endif; ?]
     </div>
-
+    <div class="clearfix"></div>
 </div>
 [?php endif; ?]

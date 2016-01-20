@@ -4,7 +4,7 @@
 [?php slot('page_title') ?]
     <?php /*[?php echo <?php echo $this->getI18NString('new.title') ?> ?]*/?>
     <h1>
-        [?php echo "<?php echo Translate::from(array("amg",$this->getSingularName(),"new:title")) ?>"?]
+        [?php echo "<?php echo Translate::from(array("amg",$this->getSingularName(),"new:title"), ["default"=>"Add new ".sfInflector::humanize($this->getSingularName())]) ?>"?]
         <small>[?php echo '<?php echo $this->getModuleName() ?>' ?]</small>
     </h1>
 [?php end_slot()?]
@@ -15,11 +15,11 @@
         array("breadcrumbs" =>
             array(
                 array(
-                    'text'  => "<?php echo Translate::from(array("amg",$this->getSingularName(),"list:title")) ?>",
+                    'text'  => "<?php echo Translate::from(array("amg",$this->getSingularName(),"list:title"), ["default"=> sfInflector::humanize($this->getSingularName())." List"]) ?>",
                     'link'  => '@<?php echo $this->getUrlForAction('list') ?>'
                 ),
                 array(
-                    'text'  => "<?php echo Translate::from(array("amg",$this->getSingularName(),"new:title")) ?>",
+                    'text'  => "<?php echo Translate::from(array("amg",$this->getSingularName(),"new:title"), ["default"=>"Add new ".sfInflector::humanize($this->getSingularName())]) ?>",
                     'link'  => '@<?php echo $this->getUrlForAction('new') ?>'
                 )
             )

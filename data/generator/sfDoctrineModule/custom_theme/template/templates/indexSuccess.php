@@ -7,7 +7,7 @@
 [?php slot('page_title') ?]
     <h1>
         <?php /*[?php echo <?php echo $this->getI18NString('list.title') ?> ?]*/?>
-        [?php echo "<?php echo Translate::from(array("amg",$this->getSingularName(),"list:title")) ?>"?]
+        [?php echo "<?php echo Translate::from(array("amg",$this->getSingularName(),"list:title"),["default"=> sfInflector::humanize($this->getSingularName())." List"]) ?>"?]
         <small>[?php echo '<?php echo $this->getModuleName() ?>' ?]</small>
     </h1>
 [?php end_slot()?]
@@ -18,7 +18,7 @@
         array("breadcrumbs" =>
             array(
                 array(
-                    'text'  =>  "<?php echo Translate::from(array("amg",$this->getSingularName(),"list:title")) ?>",
+                    'text'  =>  "<?php echo Translate::from(array("amg",$this->getSingularName(),"list:title"),["default"=> sfInflector::humanize($this->getSingularName())." List"]) ?>",
                     'link'  => '@<?php echo $this->getUrlForAction('list') ?>'
                 )
             )

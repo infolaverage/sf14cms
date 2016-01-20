@@ -8,7 +8,7 @@
 
     <label class="col-md-3 control-label">
         <?php /*[?php echo $form[$name]->renderLabel($label) ?]*/?>
-        [?php echo Translate::from(array("amg","<?php echo $this->getSingularName()?>","field",$name,"label"))?]
+        [?php echo Translate::from(array("amg","<?php echo $this->getSingularName()?>","field",$name,"label"),["default"=> $form[$name]->renderLabelName($name)])?]
     </label>
 
     <div class="col-md-9">

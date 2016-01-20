@@ -3,7 +3,7 @@
         <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]?page=1">
             <span>
                 <i class="fa fa-angle-double-left"></i>
-                [?php echo Translate::from(array("backend","pager:btn:first:text"));?]
+                [?php echo Translate::from(array("backend","pager:btn:first:text"), ["default"=>"First"]);?]
             </span>
         </a>
     </li>
@@ -11,7 +11,7 @@
         <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]?page=[?php echo $pager->getPreviousPage() ?]">
             <span>
                 <i class="fa fa-angle-left"></i>
-                [?php echo Translate::from(array("backend","pager:btn:previous:text"));?]
+                [?php echo Translate::from(array("backend","pager:btn:previous:text"), ["default"=>"Previous"]);?]
             </span>
         </a>
     </li>
@@ -29,7 +29,7 @@
     <li>
         <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]?page=[?php echo $pager->getNextPage() ?]">
             <span>
-                [?php echo Translate::from(array("backend","pager:btn:next:text"));?]
+                [?php echo Translate::from(array("backend","pager:btn:next:text"), ["default"=>"Next"]);?]
                 <i class="fa fa-angle-right"></i>
             </span>
         </a>
@@ -37,7 +37,7 @@
     <li class="next">
         <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]?page=[?php echo $pager->getLastPage() ?]">
             <span>
-                [?php echo Translate::from(array("backend","pager:btn:last:text"));?]
+                [?php echo Translate::from(array("backend","pager:btn:last:text"), ["default"=>"Last"]);?]
                 <i class="fa fa-angle-double-right"></i>
             </span>
         </a>

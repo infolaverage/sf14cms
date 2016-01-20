@@ -99,6 +99,7 @@
                         [?php echo Translate::from(
                             ["backend","pager:result:numbers:%1%"],
                             [
+
                                 "args" => [
                                     "%1%" => $pager->getNbResults()
                                 ],

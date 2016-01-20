@@ -7,7 +7,7 @@
         <div class="portlet-title">
             <div class="caption"><i class="fa fa-filter"></i>
                 <?php /*[?php echo __('Filter', array(), 'sf_admin') ?]*/?>
-                [?php echo "<?php echo Translate::from(array("amg",$this->getSingularName(),"filter:title")) ?>"?]
+                [?php echo "<?php echo Translate::from(array("amg",$this->getSingularName(),"filter:title"), ["default"=>"Filter"]) ?>"?]
             </div>
             <div class="tools">
                 <a href="javascript:;" class="expand"></a>
@@ -49,11 +49,11 @@
                         ?>
                         <button type="submit" class="btn green">
                             <i class="fa fa-search"></i>
-                            [?php echo Translate::from("general:filter:btn:text:filter") ?]
+                            [?php echo Translate::from("general:filter:btn:text:filter",["default"=>"Filter"]) ?]
                         </button>
 
                         [?php echo link_to(
-                            "<i class='fa fa-times'></i> ".Translate::from("general:filter:btn:text:reset"),
+                            "<i class='fa fa-times'></i> ".Translate::from("general:filter:btn:text:reset",["default"=>"Reset"]),
                             '<?php echo $this->getUrlForAction('collection') ?>',
                             array('action' => 'filter'),
                             array('query_string' => '_reset', 'method' => 'post', 'class'=>'btn red')
