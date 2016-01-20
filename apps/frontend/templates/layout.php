@@ -15,9 +15,9 @@
 </head>
 <body onload="breakoutOfFrame()">
 
-    <?php include_component("site_menu", "top")?>
+    <?php //include_component("site_menu", "top")?>
 
-    <?php include_slot("content_top_outer_1");?>
+    <?php //include_slot("content_top_outer_1");?>
 
     <?php
         $base_container_class = "container";
@@ -33,7 +33,7 @@
         <?php echo $sf_content ?>
     </div>
 
-    <?php include_partial("custom_content/footer/footer")?>
+    <?php //include_partial("custom_content/footer/footer")?>
 
 </body>
 </html>

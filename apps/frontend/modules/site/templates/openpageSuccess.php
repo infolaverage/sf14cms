@@ -1,3 +1,4 @@
+<?php /*
 <?php include_component("banner", "compByType", ["type"=>"openpage-slider"])?>
 
 <?php slot("base_container_class", "")?>
@@ -44,3 +45,4 @@
         </div>
     </div>
 </div>
+ * */?>
