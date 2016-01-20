@@ -6,43 +6,57 @@ homepage:
   url:   /
   param: { module: site, action: openpage }
 
+#homepage_localized:
+#  url:   /:sf_culture
+#  param: { module: site, action: openpage }
 #------------------------------------------------------------------------------
 
 contact:
   url: /:index_slug.chtml
+  #url: /:sf_culture/:index_slug.chtml #i18n
   param: { module: contact, action: index, index_slug: contact }
 
-#------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------
 team_member_index:
   url: /:index_slug.tmhtml
+  #url: /:sf_culture/:index_slug.tmhtml
   param: { module: team_member, action: index, index_slug: team }
 
 team_member_index_alt:
   url: /:index_slug.tmhtml
+  #url: /:sf_culture/:index_slug.tmhtml
   param: { module: team_member, action: index, index_slug: team }
 
 team_member_show:
   url: /:obj_final_slug.id.tmhtml
+  #url: /:sf_culture/:obj_final_slug.:id.tmhtml
   param: { module: team_member, action: show }
-#------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------
 reference_index:
   url: /:index_slug.rhtml
+  #url: /:sf_culture/:index_slug.rhtml
   param: { module: reference, action: index, index_slug: reference }
 
 reference_index_alt:
   url: /:index_slug.rhtml
+  #url: /:sf_culture/:index_slug.rhtml
   param: { module: reference, action: index, index_slug: reference }
-
-#LOCALIZABLE
-#------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------
 cms_show:
   url: /:obj_final_slug.:id.cshtml
+  #url: /:sf_culture/:obj_final_slug.:id.cshtml
   param: { module: cms, action: show }
 
 cms_show_a1:
   url: /:id.cshtml
+  #url: /:sf_culture/:id.cshtml
   param: { module: cms, action: show }
-#------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------
+
+robots_txt:
+  url: /robots.txt
+  param: { module: general, action: robotsTxt }
+
 
 default_index:
   url:   /:module
