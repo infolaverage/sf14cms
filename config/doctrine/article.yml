@@ -1,0 +1,120 @@
+#Article::
+#=======================================================================================================================
+Article:
+  columns:
+    site_id:                { type: integer }
+    title_general:          { type: string(255), notnull: true }
+    title:                  { type: string(255) }
+    description:            { type: clob }
+    content:                { type: clob }
+    is_active:              { type: boolean, default: false }
+    #is_translated:          { type: boolean, default: false }
+    date_published:         { type: timestamp, default: null }
+    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    html_title:             { type: string(1023) }
+    meta_title:             { type: string(1023) }
+    meta_description:       { type: clob }
+    meta_keywords:          { type: clob }
+    meta_robots:            { type: string(255) }
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  actAs:
+      Timestampable:        ~
+      Sluggable:
+        unique:         false
+        fields:         [title]
+        canUpdate:      true
+        builder:        ['Project', 'slugify']
+  #    I18n:
+  #      fields: [title, description, content, is_translated, html_title, meta_title, meta_description, meta_keywords, meta_robots]
+  #      actAs:
+  #        Sluggable:
+  #          unique:         false
+  #          fields:         [title]
+  #          canUpdate:      true
+  #          builder:        ['Project', 'slugify']
+  relations:
+    Site:
+      onDelete:             CASCADE
+      local:                site_id
+      foreign:              id
+      foreignAlias:         Cmss
+
+#News::
+#=======================================================================================================================
+News:
+  columns:
+    site_id:                { type: integer }
+    title_general:          { type: string(255), notnull: true }
+    title:                  { type: string(255) }
+    description:            { type: clob }
+    content:                { type: clob }
+    is_active:              { type: boolean, default: false }
+    is_translated:          { type: boolean, default: false }
+    date_published:         { type: timestamp, default: null }
+    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    html_title:             { type: string(1023) }
+    meta_title:             { type: string(1023) }
+    meta_description:       { type: clob }
+    meta_keywords:          { type: clob }
+    meta_robots:            { type: string(255) }
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  actAs:
+      Timestampable:        ~
+      Sluggable:
+        unique:         false
+        fields:         [title]
+        canUpdate:      true
+        builder:        ['Project', 'slugify']
+      #I18n:
+      #  fields:             [title, description, content, is_translated, html_title, meta_title, meta_description, meta_keywords, meta_robots]
+      #  actAs:
+      #    Sluggable:
+      #      unique:         false
+      #      fields:         [title]
+      #      canUpdate:      true
+      #      builder:        ['Project', 'slugify']
+  relations:
+    Site:
+      onDelete:             CASCADE
+      local:                site_id
+      foreign:              id
+      foreignAlias:         Newss
+
+#Quote::
+#=======================================================================================================================
+Quote:
+  columns:
+    site_id:                { type: integer }
+    title_general:          { type: string(255), notnull: true }
+    title:                  { type: string(255) }
+    filename:               { type: string(255) }
+    description:            { type: clob }
+    content:                { type: clob }
+    is_active:              { type: boolean, default: false }
+    is_translated:          { type: boolean, default: false }
+    author_name:            { type: string(255) }
+    author_location:        { type: string(511) }
+    author_url:             { type: string(511) }
+    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    html_title:             { type: string(1023) }
+    meta_title:             { type: string(1023) }
+    meta_description:       { type: clob }
+    meta_keywords:          { type: clob }
+    meta_robots:            { type: string(255) }
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  actAs:
+      Timestampable:        ~
+      I18n:
+        fields:             [title, description, content, is_translated, author_name, author_location, author_url, html_title, meta_title, meta_description, meta_keywords, meta_robots]
+        actAs:
+          Sluggable:
+            unique:         false
+            fields:         [title]
+            canUpdate:      true
+            builder:        ['Project', 'slugify']
+  relations:
+    Site:
+      onDelete:             CASCADE
+      local:                site_id
+      foreign:              id
+      foreignAlias:         Quotes

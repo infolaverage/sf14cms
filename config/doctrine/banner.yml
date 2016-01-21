@@ -3,7 +3,7 @@
 Banner:
   columns:
     site_id:             { type: integer, notnull: true }
-    display_type:        { type: integer(2), notnull: true, default: 0 }
+    display_type:        { type: integer, notnull: true, default: 0 }
     url:                 { type: string }
     url_predefined:      { type: string }
     filename:            { type: string(255) }
@@ -17,15 +17,20 @@ Banner:
     description:         { type: clob }
     #short_content:       { type: clob }
     content:             { type: clob }
+    button_text:         { type: string(255) }
     template:            { type: integer }
     custom_code:         { type: clob }
     is_target_blank:     { type: boolean, notnull: true, default: 0 }
     is_active:           { type: boolean, notnull: true, default: 1 }
     show_title:          { type: boolean, notnull: true, default: 1 }
+    display_start_at:    { type: datetime }
+    display_end_at:      { type: datetime }
   actAs:
     Timestampable:       ~ 
     Sortable:
       uniqueBy:         [site_id, display_type]
+    #I18n:
+    #  fields: [html_alt, html_title, title, head_title, head_text, description, content]
   relations:
     Site:
       class:             Site

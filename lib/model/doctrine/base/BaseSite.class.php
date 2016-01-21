@@ -12,12 +12,11 @@
  * @property clob $domain_dev_alias
  * @property boolean $is_active
  * @property boolean $is_demo
+ * @property Doctrine_Collection $Cmss
+ * @property Doctrine_Collection $Newss
+ * @property Doctrine_Collection $Quotes
  * @property Doctrine_Collection $Banners
  * @property Doctrine_Collection $SiteMenus
- * @property Doctrine_Collection $Cmss
- * @property Doctrine_Collection $Services
- * @property Doctrine_Collection $References
- * @property Doctrine_Collection $TeamMembers
  * @property Doctrine_Collection $Contacts
  * @property Doctrine_Collection $SiteSettings
  * @property Doctrine_Collection $SiteTransUnits
@@ -29,12 +28,11 @@
  * @method clob                getDomainDevAlias()   Returns the current record's "domain_dev_alias" value
  * @method boolean             getIsActive()         Returns the current record's "is_active" value
  * @method boolean             getIsDemo()           Returns the current record's "is_demo" value
+ * @method Doctrine_Collection getCmss()             Returns the current record's "Cmss" collection
+ * @method Doctrine_Collection getNewss()            Returns the current record's "Newss" collection
+ * @method Doctrine_Collection getQuotes()           Returns the current record's "Quotes" collection
  * @method Doctrine_Collection getBanners()          Returns the current record's "Banners" collection
  * @method Doctrine_Collection getSiteMenus()        Returns the current record's "SiteMenus" collection
- * @method Doctrine_Collection getCmss()             Returns the current record's "Cmss" collection
- * @method Doctrine_Collection getServices()         Returns the current record's "Services" collection
- * @method Doctrine_Collection getReferences()       Returns the current record's "References" collection
- * @method Doctrine_Collection getTeamMembers()      Returns the current record's "TeamMembers" collection
  * @method Doctrine_Collection getContacts()         Returns the current record's "Contacts" collection
  * @method Doctrine_Collection getSiteSettings()     Returns the current record's "SiteSettings" collection
  * @method Doctrine_Collection getSiteTransUnits()   Returns the current record's "SiteTransUnits" collection
@@ -45,12 +43,11 @@
  * @method Site                setDomainDevAlias()   Sets the current record's "domain_dev_alias" value
  * @method Site                setIsActive()         Sets the current record's "is_active" value
  * @method Site                setIsDemo()           Sets the current record's "is_demo" value
+ * @method Site                setCmss()             Sets the current record's "Cmss" collection
+ * @method Site                setNewss()            Sets the current record's "Newss" collection
+ * @method Site                setQuotes()           Sets the current record's "Quotes" collection
  * @method Site                setBanners()          Sets the current record's "Banners" collection
  * @method Site                setSiteMenus()        Sets the current record's "SiteMenus" collection
- * @method Site                setCmss()             Sets the current record's "Cmss" collection
- * @method Site                setServices()         Sets the current record's "Services" collection
- * @method Site                setReferences()       Sets the current record's "References" collection
- * @method Site                setTeamMembers()      Sets the current record's "TeamMembers" collection
  * @method Site                setContacts()         Sets the current record's "Contacts" collection
  * @method Site                setSiteSettings()     Sets the current record's "SiteSettings" collection
  * @method Site                setSiteTransUnits()   Sets the current record's "SiteTransUnits" collection
@@ -99,27 +96,23 @@ abstract class BaseSite extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Article as Cmss', array(
+             'local' => 'id',
+             'foreign' => 'site_id'));
+
+        $this->hasMany('News as Newss', array(
+             'local' => 'id',
+             'foreign' => 'site_id'));
+
+        $this->hasMany('Quote as Quotes', array(
+             'local' => 'id',
+             'foreign' => 'site_id'));
+
         $this->hasMany('Banner as Banners', array(
              'local' => 'id',
              'foreign' => 'site_id'));
 
         $this->hasMany('SiteMenu as SiteMenus', array(
-             'local' => 'id',
-             'foreign' => 'site_id'));
-
-        $this->hasMany('Cms as Cmss', array(
-             'local' => 'id',
-             'foreign' => 'site_id'));
-
-        $this->hasMany('Service as Services', array(
-             'local' => 'id',
-             'foreign' => 'site_id'));
-
-        $this->hasMany('Reference as References', array(
-             'local' => 'id',
-             'foreign' => 'site_id'));
-
-        $this->hasMany('TeamMember as TeamMembers', array(
              'local' => 'id',
              'foreign' => 'site_id'));
 

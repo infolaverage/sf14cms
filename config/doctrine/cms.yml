@@ -17,6 +17,8 @@ SiteMenu:
     Timestampable:      ~
     Sortable:
       uniqueBy:         [parent_id]
+    #I18n:
+    #  fields: [text, html_title]
   relations: 
     ParentMenu:
       class:            SiteMenu
@@ -33,16 +35,13 @@ SiteMenu:
 
 #Cms::
 #=======================================================================================================================
-
 Cms:
   columns:
     site_id:                { type: integer }
     title_general:          { type: string(255), notnull: true }
     title:                  { type: string(255) }
     role:                   { type: string(255) }
-    #short_description:     { type: clob }
     description:            { type: clob }
-    #short_content:         { type: clob }
     content:                { type: clob }
     is_active:              { type: boolean, default: false }
     #is_translated:         { type: boolean, default: false }
@@ -62,6 +61,14 @@ Cms:
       builder:              ['Project', 'slugify']
     #Sortable:
     #  uniqueBy:             [site_id]
+    #I18n:
+    #  fields: [title, description, content, is_translated, html_title, meta_title, meta_description, meta_keywords, meta_robots]
+    #  actAs:
+    #    Sluggable:
+    #      unique:  false
+    #      fields: [title]
+    #      canUpdate: true
+    #      builder: ['Project', 'slugify']
   relations:
     Site:
       onDelete:             CASCADE
@@ -69,101 +76,117 @@ Cms:
       foreign:              id
       foreignAlias:         Cmss
 
-Service:
-  columns:
-    site_id:                { type: integer }
-    title_general:          { type: string(255), notnull: true }
-    title:                  { type: string(255) }
-    #role:                   { type: string(255) }
-    description:            { type: clob }
-    content:                { type: clob }
-    is_active:              { type: boolean, default: false }
-    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    html_title:             { type: string(1023) }
-    meta_title:             { type: string(1023) }
-    meta_description:       { type: clob }
-    meta_keywords:          { type: clob }
-    meta_robots:            { type: string(255) }
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  actAs:
-    Timestampable:          ~
-    Sluggable:
-      unique:               false
-      fields:               [title_general]
-      canUpdate:            true
-      builder:              ['Project', 'slugify']
-    Sortable:
-      uniqueBy:             [site_id]
-  relations:
-    Site:
-      onDelete:             CASCADE
-      local:                site_id
-      foreign:              id
-      foreignAlias:         Services
+#Service::
+#=======================================================================================================================
+#Service:
+#  columns:
+#    site_id:                { type: integer }
+#    title_general:          { type: string(255), notnull: true }
+#    title:                  { type: string(255) }
+#    #role:                   { type: string(255) }
+#    description:            { type: clob }
+#    content:                { type: clob }
+#    is_active:              { type: boolean, default: false }
+#    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#    html_title:             { type: string(1023) }
+#    meta_title:             { type: string(1023) }
+#    meta_description:       { type: clob }
+#    meta_keywords:          { type: clob }
+#    meta_robots:            { type: string(255) }
+#    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#  actAs:
+#    Timestampable:          ~
+#    Sluggable:
+#      unique:               false
+#      fields:               [title_general]
+#      canUpdate:            true
+#      builder:              ['Project', 'slugify']
+#    Sortable:
+#      uniqueBy:             [site_id]
+#  relations:
+#    Site:
+#      onDelete:             CASCADE
+#      local:                site_id
+#      foreign:              id
+#      foreignAlias:         Services
 
-Reference:
-  columns:
-    site_id:                { type: integer }
-    title_general:          { type: string(255), notnull: true }
-    title:                  { type: string(255) }
-    #role:                   { type: string(255) }
-    filename:               { type: string(255) } # thumbnail
-    video:                  { type: string(511) } # video thumbnail
-    description:            { type: clob }
-    content:                { type: clob }
-    is_active:              { type: boolean, default: false }
-    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    html_title:             { type: string(1023) }
-    meta_title:             { type: string(1023) }
-    meta_description:       { type: clob }
-    meta_keywords:          { type: clob }
-    meta_robots:            { type: string(255) }
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  actAs:
-    Timestampable:          ~
-    Sluggable:
-      unique:               false
-      fields:               [title_general]
-      canUpdate:            true
-      builder:              ['Project', 'slugify']
-    Sortable:
-      uniqueBy:             [site_id]
-  relations:
-    Site:
-      onDelete:             CASCADE
-      local:                site_id
-      foreign:              id
-      foreignAlias:         References
+#Reference::
+#=======================================================================================================================
+#Reference:
+#  columns:
+#    site_id:                { type: integer }
+#    title_general:          { type: string(255), notnull: true }
+#    title:                  { type: string(255) }
+#    #role:                   { type: string(255) }
+#    filename:               { type: string(255) } # thumbnail
+#    video:                  { type: string(511) } # video thumbnail
+#    description:            { type: clob }
+#    content:                { type: clob }
+#    is_active:              { type: boolean, default: false }
+#    #is_translated:          { type: boolean, default: false }
+#    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#    html_title:             { type: string(1023) }
+#    meta_title:             { type: string(1023) }
+#    meta_description:       { type: clob }
+#    meta_keywords:          { type: clob }
+#    meta_robots:            { type: string(255) }
+#    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#  actAs:
+#    Timestampable:          ~
+#    Sluggable:
+#      unique:               false
+#      fields:               [title_general]
+#      canUpdate:            true
+#      builder:              ['Project', 'slugify']
+#    Sortable:
+#      uniqueBy:             [site_id]
+#  relations:
+#    Site:
+#      onDelete:             CASCADE
+#      local:                site_id
+#      foreign:              id
+#      foreignAlias:         References
 
-TeamMember:
-  columns:
-    site_id:                { type: integer }
-    title_general:          { type: string(255), notnull: true }
-    title:                  { type: string(255) }
-    member_position:        { type: string(511) }
-    filename:               { type: string(255) } # thumbnail
-    description:            { type: clob }
-    content:                { type: clob }
-    is_active:              { type: boolean, default: false }
-    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    html_title:             { type: string(1023) }
-    meta_title:             { type: string(1023) }
-    meta_description:       { type: clob }
-    meta_keywords:          { type: clob }
-    meta_robots:            { type: string(255) }
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  actAs:
-    Timestampable:          ~
-    Sluggable:
-      unique:               false
-      fields:               [title_general]
-      canUpdate:            true
-      builder:              ['Project', 'slugify']
-    Sortable:
-      uniqueBy:             [site_id]
-  relations:
-    Site:
-      onDelete:             CASCADE
-      local:                site_id
-      foreign:              id
-      foreignAlias:         TeamMembers
+#TeamMember::
+#=======================================================================================================================
+#TeamMember:
+#  columns:
+#    site_id:                { type: integer }
+#    title_general:          { type: string(255), notnull: true }
+#    title:                  { type: string(255) }
+#    member_position:        { type: string(511) }
+#    filename:               { type: string(255) } # thumbnail
+#    description:            { type: clob }
+#    content:                { type: clob }
+#    is_active:              { type: boolean, default: false }
+#    #is_translated:          { type: boolean, default: false }
+#    # SEO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#    html_title:             { type: string(1023) }
+#    meta_title:             { type: string(1023) }
+#    meta_description:       { type: clob }
+#    meta_keywords:          { type: clob }
+#    meta_robots:            { type: string(255) }
+#    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#  actAs:
+#    Timestampable:          ~
+#    Sluggable:
+#      unique:               false
+#      fields:               [title_general]
+#      canUpdate:            true
+#      builder:              ['Project', 'slugify']
+#    Sortable:
+#      uniqueBy:             [site_id]
+#    #I18n:
+#    #  fields: [title, member_position, description, content, is_translated, html_title, meta_title, meta_description, meta_keywords, meta_robots]
+#    #  actAs:
+#    #    Sluggable:
+#    #      unique:  false
+#    #      fields: [title]
+#    #      canUpdate: true
+#    #      builder: ['Project', 'slugify']
+#  relations:
+#    Site:
+#      onDelete:             CASCADE
+#      local:                site_id
+#      foreign:              id
+#      foreignAlias:         TeamMembers
